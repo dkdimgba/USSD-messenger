@@ -1,0 +1,1 @@
+{"sessionId":"6ac90372-d798-11e4-876d-40f2e9085e1a","transactionId":"6ac90372-d798-11e4-876d-40f2e9085e1a","status":200,"responseType":"MENU","data":{ "items": [ { "menuContent": "33", "menuOrder": 1, "itemType": "static", "requestURL": "", "screen": {} }, { "menuContent": "44", "menuOrder": 2, "itemType": "static", "requestURL": "", "screen": {} } ]}}

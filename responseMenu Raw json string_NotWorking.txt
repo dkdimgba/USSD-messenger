@@ -1,0 +1,25 @@
+<?php include 'connect.php';?>
+<?php
+$inputJSON = file_get_contents('php://input');
+$sql = "INSERT INTO RequestHeader (column_data)
+VALUES ('$inputJSON')";
+if ($conn->query($sql) === TRUE) {
+//    echo "New record created successfully";
+}
+header('Content-Type: application/json');
+$input= json_decode( $inputJSON, TRUE );
+
+
+$response = '{"sessionId":"' . $input[sessionId] . '","transactionId":"' . $input[transactionId] . '","status":200,"responseType":"CONTENT","menuId":"1_1","data":{"items": "[{ \"menuContent\": \"33\", \"menuOrder\": 1, \"itemType\": \"static\", \"requestURL\": \"\", \"screen\": {} }, { \"menuContent\": \"44\", \"menuOrder\": 2, \"itemType\": \"static\", \"requestURL\": \"\", \"screen\": {} } ]"}}';
+header('Content-Type: application/json');
+echo $response;
+$sql = "INSERT INTO postData (column_request)
+VALUES ('$response')";
+if ($conn->query($sql) === TRUE) {
+//    echo "New record created successfully";
+}
+
+?>
+
+
+<?php include 'disconnect.php';?>

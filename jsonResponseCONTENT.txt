@@ -1,0 +1,1 @@
+{"sessionId":"9179e146-d78c-11e4-baaf-40f2e9085e1a","transactionId":"9179e146-d78c-11e4-baaf-40f2e9085e1a","status":200,"responseType":"CONTENT","menuId":"1_1","data":"["POLITICS","SPORTS","CULTURE"]"}

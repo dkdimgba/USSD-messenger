@@ -1,0 +1,11 @@
+//String in single quotes
+{"sessionId":"","transactionId":"","status":200,"responseType":"CONTENT","menuId":"1_1","data":"["POLITICS","SPORTS","CULTURE"]"}
+
+
+//String from an array
+{"sessionId":null,"transactionId":null,"status":200,"responseType":"CONTENT","menuId":null,"data":"[\"POLITICS\",\"SPORTS\",\"CULTURE\"]"}
+
+
+//String modified in single quotes
+{"sessionId":"","transactionId":"","status":200,"responseType":"CONTENT","menuId":"1_1","data":"[\"POLITICS\",\"SPORTS\",\"CULTURE\"]"}
+

@@ -1,0 +1,25 @@
+<?php include 'connect.php';?>
+<?php
+$inputJSON = file_get_contents('php://input');
+$sql = "INSERT INTO postData (column_request)
+VALUES ('$inputJSON')";
+if ($conn->query($sql) === TRUE) {
+//    echo "New record created successfully";
+}
+header('Content-Type: application/json');
+$input= json_decode( $inputJSON, TRUE );
+
+
+$response = '{"sessionId":"' . $input[sessionId] . '","transactionId":"' . $input[transactionId] . '","status":200,"responseType":"MENU","data": { "items": [ {"menuContent": "MenuContent1", "menuOrder": 1, "itemType": "static", "requestURL": "", "screen": { "items": [ { "menuContent": "MenuContent11", "menuOrder": 1, "itemType": "static", "requestURL": "", "screen": {} }, { "menuContent": "MenuContent12", "menuOrder": 2, "itemType": "static", "requestURL": "", "screen": {} } ], "menuId": "1_1", "menuHeader": "" } }, { "menuContent": "MenuContent_2", "menuOrder": 2, "itemType": "static", "requestURL": "http://jeffrycopps.in/menu2.php", "screen": {} } ], "menuId": "1", "menuHeader": "Header_home", "menuFooter": "Footer_home" }}';
+header('Content-Type: application/json');
+echo $response;
+$sql = "INSERT INTO postData (column_request)
+VALUES ('$response')";
+if ($conn->query($sql) === TRUE) {
+//    echo "New record created successfully";
+}
+
+?>
+
+
+<?php include 'disconnect.php';?>

@@ -1,0 +1,25 @@
+<?php include 'connect.php';?>
+<?php
+$inputJSON = file_get_contents('php://input');
+$sql = "INSERT INTO table_check (column_check)
+VALUES ('$inputJSON')";
+if ($conn->query($sql) === TRUE) {
+//    echo "New record created successfully";
+}
+header('Content-Type: application/json');
+$input= json_decode( $inputJSON, TRUE );
+
+
+$response = '{"sessionId":"' . $input[sessionId] . '","transactionId":"' . $input[transactionId] . '","status":200,"responseType":"MENU","data": { "items": [ {"menuContent": "11", "menuOrder": 1, "itemType": "static", "requestURL": "", "screen": { "items": [ { "menuContent": "33", "menuOrder": 1, "itemType": "dynamic", "requestURL": "http://ussd.wc.lt/inbox.php", "screen": {} }, { "menuContent": "44", "menuOrder": 2, "itemType": "static", "requestURL": "", "screen": {} } ], "menuId": "1_1", "menuHeader": "" } }, { "menuContent": "22", "menuOrder": 2, "itemType": "static", "requestURL": "", "screen": {} } ], "menuId": "1", "menuHeader": "heading1", "menuFooter": "" }}';
+header('Content-Type: application/json');
+echo $response;
+$sql = "INSERT INTO table_check (column_check)
+VALUES ('$response')";
+if ($conn->query($sql) === TRUE) {
+//    echo "New record created successfully";
+}
+
+?>
+
+
+<?php include 'disconnect.php';?>

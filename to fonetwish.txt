@@ -1,0 +1,24 @@
+Hello Fonetwish, 
+
+Thanks for your good answers @Team engineering. 
+The following are my queries after going through you answers. 
+1. ** C) "If application developer intends to take user input; then remove menu options while keeping the text in heading, and connect to further screens." - help page on Fonewish.com
+Yes, for this use input screen and the next screen must be dynamic url using which the request would be sent to developer server.
+Then its upto developer server to send response in platform specific format **
+ - Input screen, you are telling me to use fonetwish transition diagram generator right? I tried it, but I have these limitations if I use your state transition diagrams. 
+	--If a screen takes an input, lets say a phone number "90000000", the submitted text comes to my server as a request, which I can parse and take the phone number. But how will i take the next input "message" after it reaches my server? 
+	Only two types of response are allowed "MENU" and "CONTENT". The menu will accept only [0-9*#] as input.
+	Is there a way to return back to your fonetwish transition diagrams once after hitting my server? 
+	I can summarise the question as, how can i take 2 consecutive user inputs(phone number, message) ? 
+	
+	Typically, the message sendng flow goes like, 
+	Type a phone number or contact name, submit.
+	Type the message, submit. 
+	Success.
+ -If I use your State transition diagrams, I am not able to return back to any other previously visited screen. 
+	Or, is there a way to do this. Are those screen indexed? Is it possible to programmatically those screens?
+	Ex: After sending a message, the user should be given option to return to home page, which I don find possible here. 
+	
+	I am using PHP, can you show me an example for the above? Any language will do, I am ok with that.
+	
+
