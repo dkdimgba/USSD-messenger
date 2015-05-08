@@ -23,7 +23,7 @@ function validatePhoneNumber($input)
 		{
 			if(strlen($input)==10)
 			{
-				if($input[0]>='6')
+				// Removed if($input[0]>='6') Simulators used numbers < 6
 				$return = true;	
 			}
 			else 
