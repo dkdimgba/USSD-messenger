@@ -30,7 +30,7 @@ function validatePhoneNumber($input)
 			{
 				if(strlen($input)==12)	
 				{
-					if($input[0]=='9' && $input[1]=='1' && $input[2]>='6')
+					if($input[0]=='9' && $input[1]=='1' ) // Removed if($input[2]>='6') Simulators used numbers < 6
 					{
 						$input=substr($input,2,11);
 						$return = true;
@@ -38,7 +38,7 @@ function validatePhoneNumber($input)
 				}
 				else if(strlen($input)==11)
 				{
-					if($input[0]=='0' && $input[1]>='6')
+					if($input[0]=='0') // Removed if($input[2]>='6') Simulators used numbers < 6
 					{
 						$input=substr($input,1,10);
 						$return = true;
