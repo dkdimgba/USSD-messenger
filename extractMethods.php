@@ -62,19 +62,7 @@ function getPhoneNum($input)
 
 function getMessage($input)
 {
-	$i=0;
-	while($i<strlen($input) && ($input[$i]<'0' || $input[$i]>'9')) 
-		$i++;
-
-	while($i < strlen($input) && ($input[$i]>='0' && $input[$i]<='9') )
-		{
-			$i++;
-		}
-		while($i<strlen($input) && ($input[$i]==' ')) 
-		$i++;
-
-	$return = substr($input,$i,strlen($input)-1);
-	return $return;
+	return $input;
 
 }
 
