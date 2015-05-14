@@ -1,5 +1,5 @@
-<?php include 'connect.php';?>
-<?php include 'extractMethods.php';?>
+<?php include '../connect.php';?>
+<?php include '../extractMethods.php';?>
 <?php
 
 function selectMessages($input,$conn) 
@@ -30,21 +30,33 @@ $response = '{"sessionId":"' . $input[sessionId] . '","transactionId":"' . $inpu
 	
 	if ($result->num_rows > 0) 
 	{
-	$rowNum=1;
-	$numResults = mysql_num_rows($result);
-    while(($row = $result->fetch_assoc()) && $rowNum<=3) 
+		$rowNum=1;
+	$numResults = $result->num_rows; //mysql_num_rows($result);
+	if($numResults>3)
+	{
+		$numResults = 3; //maximum 3 rows allowed
+	}
+while(($row = $result->fetch_assoc()) && $rowNum<=3) 
 	{
 		$content.= '{"menuContent": "';
 		$content.= 'From: ' . $row["column_from"]. ' - Msg: ' . substr($row["column_message"],0,5);
 		$content.='", "menuOrder": ';
 		$content.=$rowNum;
-		$content.=', "itemType": "static", "requestURL": "", "screen": {';
-		$content.='"items": "';
-		$content.= 'From: ' . $row["column_from"]. ' - Msg: ' . $row["column_message"];
-		$content.='"}';
+		$content.=', "itemType": "static", "requestURL": "", "screen": {"items": [
+ {
+ "menuContent": "33",
+ "menuOrder": 1,
+ "itemType": "dynamic",
+ "requestURL": "http://jeffrycopps.in/inbox/newInbox_2.php",
+ "screen": {}
+ }
+ ],
+ "menuId": "1_2",
+ "menuHeader": ""}';
 		$content.='}';
-		if($rowNum<3 &&  $numResults!=$rowNum)
+		if($numResults!=$rowNum)
 		{$content.=',';}
+		
 		$rowNum++;
 	}
 	
@@ -55,7 +67,7 @@ $response = '{"sessionId":"' . $input[sessionId] . '","transactionId":"' . $inpu
 	}
  $response.=$content;
  
- $response.= '], "menuId": "1", "menuHeader": "heading1", "menuFooter": "" }}';
+ $response.= '], "menuId": "1", "menuHeader": "", "menuFooter": "" }, "menuId": "1", "menuHeader": "", "menuFooter": "" }';
 header('Content-Type: application/json');
 echo $response;
 $time=time();
@@ -69,4 +81,4 @@ if ($conn->query($sql) === TRUE) {
 ?>
 
 
-<?php include 'disconnect.php';?>
+<?php include '../disconnect.php';?>
